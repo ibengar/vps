@@ -1,4 +1,4 @@
-FROM kalilinux/kali-rolling 
+FROM ubuntu:latest 
 
 RUN apt-get update -y > /dev/null 2>&1 && apt-get upgrade -y > /dev/null 2>&1 && apt-get install locales -y \ 
      && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \ 
@@ -19,5 +19,5 @@ RUN echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config \
      && echo root:${Password}|chpasswd 
 RUN service ssh start 
 RUN chmod 755 /kali.sh 
-EXPOSE 22 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306 
+EXPOSE 22 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306 1701
 CMD  /kali.sh
